@@ -3,8 +3,18 @@
 
 Framework template para testes automatizados em java
 
-Para executar, basta utilizat o comando:
+Para executar, basta utilizar o comando:
 ```
 mvn test
 ```
 ou pode executar manualmente através de sua IDE.
+
+Também é possível passar alguns parâmetros, veja quais:
+```
+mvn test -Dbrowser=firefox|chrome (default:chrome)
+mvn test -Dtype=local|remote|headless_local|headless_remote (default:local)
+mvn test -Dhub=http://localhost:4444/wd/hub
+```
+Você pode passar um ou mais a mesma linha dependendo da situação desejada.
+
+Estes parâmetros podem ser definidos no pom.xml

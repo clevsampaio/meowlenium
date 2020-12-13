@@ -1,8 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite de testes" verbose="1" parallel="classes" thread-count="2">
-    <test name="AUTHCORP-USER">
+<suite name="Suite de testes" verbose="1" parallel="classes" thread-count="3">
+    <test name="Testes">
         <classes>
-            <class name="br.com.meow.AppTest" />
+            <class name="br.com.meow.testcases.FirstThreadTest" />
+            <class name="br.com.meow.testcases.SecondThreadTest" />
+            <class name="br.com.meow.testcases.ThirdThreadTest" />
         </classes>
     </test>
 </suite>
