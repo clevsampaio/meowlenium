@@ -14,6 +14,9 @@ public interface IElement {
     Element clear();
     boolean isEmpty();
     Element keys(Keys keys);
+    void selectByValue(String value);
+    void selectByIndex(int index);
+    void selectByVisibleText(String text);
     void submit();
     WebElement getElement();
     boolean waitElementVisible();

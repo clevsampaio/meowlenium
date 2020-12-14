@@ -2,9 +2,7 @@
 <suite name="Suite de testes" verbose="1" parallel="classes" thread-count="3">
     <test name="Testes">
         <classes>
-            <class name="br.com.meow.testcases.FirstThreadTest" />
-            <class name="br.com.meow.testcases.SecondThreadTest" />
-            <class name="br.com.meow.testcases.ThirdThreadTest" />
+            <class name="br.com.meow.testcases.AutomationPracticeTest" />
         </classes>
     </test>
 </suite>

@@ -6,6 +6,7 @@ import br.com.meow.framework.utils.JsExecutor;
 import br.com.meow.framework.widgets.IElement;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 
 public class Element extends SuperElement implements IElement {
     public Element(WebDriver driver, By by) {
@@ -195,6 +196,60 @@ public class Element extends SuperElement implements IElement {
 
         Report.log(Status.INFO, "Pressionada tecla " + keys.name() + ".");
         return this;
+    }
+
+    @Override
+    public void selectByValue(String value) {
+        try {
+            Select select = new Select(webDriver.findElement(byElement));
+            select.selectByValue(value);
+        } catch (ElementNotVisibleException e) {
+            ExceptionMessage.elementNotVisibleException(byElement);
+        } catch (NoSuchElementException e) {
+            ExceptionMessage.noSuchElementException(byElement);
+        } catch (StaleElementReferenceException e) {
+            ExceptionMessage.staleElementReferenceException(byElement);
+        } catch (TimeoutException e) {
+            ExceptionMessage.timeoutException(byElement);
+        } catch (InvalidElementStateException e) {
+            ExceptionMessage.invalidElementStateException(byElement);
+        }
+    }
+
+    @Override
+    public void selectByIndex(int index) {
+        try {
+            Select select = new Select(webDriver.findElement(byElement));
+            select.selectByIndex(index);
+        } catch (ElementNotVisibleException e) {
+            ExceptionMessage.elementNotVisibleException(byElement);
+        } catch (NoSuchElementException e) {
+            ExceptionMessage.noSuchElementException(byElement);
+        } catch (StaleElementReferenceException e) {
+            ExceptionMessage.staleElementReferenceException(byElement);
+        } catch (TimeoutException e) {
+            ExceptionMessage.timeoutException(byElement);
+        } catch (InvalidElementStateException e) {
+            ExceptionMessage.invalidElementStateException(byElement);
+        }
+    }
+
+    @Override
+    public void selectByVisibleText(String text) {
+        try {
+            Select select = new Select(webDriver.findElement(byElement));
+            select.selectByVisibleText(text);
+        } catch (ElementNotVisibleException e) {
+            ExceptionMessage.elementNotVisibleException(byElement);
+        } catch (NoSuchElementException e) {
+            ExceptionMessage.noSuchElementException(byElement);
+        } catch (StaleElementReferenceException e) {
+            ExceptionMessage.staleElementReferenceException(byElement);
+        } catch (TimeoutException e) {
+            ExceptionMessage.timeoutException(byElement);
+        } catch (InvalidElementStateException e) {
+            ExceptionMessage.invalidElementStateException(byElement);
+        }
     }
 
     @Override
