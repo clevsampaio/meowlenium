@@ -10,11 +10,9 @@ import org.testng.annotations.Listeners;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public abstract class BaseTest {
-    protected WebDriver driver;
-
     @BeforeMethod
     public void setUp() {
-        driver = DriverFactory.createInstance();
+        WebDriver driver = DriverFactory.createInstance();
         DriverManager.setDriver(driver);
         DriverManager.getDriver().manage().window().maximize();
     }
