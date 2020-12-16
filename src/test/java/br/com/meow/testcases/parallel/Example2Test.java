@@ -1,4 +1,4 @@
-package br.com.meow.testcases;
+package br.com.meow.testcases.parallel;
 
 import br.com.meow.framework.reports.Report;
 import br.com.meow.framework.utils.BaseTest;
@@ -7,13 +7,13 @@ import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-public class ExampleTest extends BaseTest
+public class Example2Test extends BaseTest
 {
     @Test(
-            description = "Pratica de automação",
-            priority = 1
+            description = "Pratica de automação 2",
+            priority = 2
     )
-    public void test()
+    public void test2()
     {
         WebDriver driver = DriverManager.getDriver();
         driver.get("https://www.google.com.br");
