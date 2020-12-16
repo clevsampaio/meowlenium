@@ -90,11 +90,9 @@ public class Report {
         ExtentTestManager.getTest().debug(details, provider);
     }
 
-    public static ReportModel extract(String reportFile) {
-        File input = new File(reportFile);
-
+    public static ReportModel extract(File reportFile) {
         try {
-            Document doc = Jsoup.parse(input, "UTF-8");
+            Document doc = Jsoup.parse(reportFile, "UTF-8");
 
             List<TestModel> testModel = new ArrayList<>();
             int testCount = 1;
@@ -111,7 +109,7 @@ public class Report {
                 testCount++;
             }
 
-            return new ReportFragment().fragment(doc, testModel, input.getName());
+            return new ReportFragment().fragment(doc, testModel, reportFile.getName());
         } catch (IOException e) {
             throw new RuntimeException("Erro de leitura no arquivo [" + reportFile + "].", e);
         }

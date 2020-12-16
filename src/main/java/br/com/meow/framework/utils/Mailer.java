@@ -4,6 +4,8 @@ import br.com.meow.framework.reports.models.ReportModel;
 import br.com.meow.framework.reports.models.TestModel;
 import br.com.meow.framework.utils.Property;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -14,7 +16,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class Mailer {
-    public static void send(String toEmail, String body){
+    public static void send(String toEmail, String body, File file){
         final String fromEmail = Property.get("email", "email.from");
         final String password = Property.get("email", "email.pass");
 
@@ -47,6 +49,12 @@ public class Mailer {
             MimeBodyPart mpb = new MimeBodyPart();
             mpb.setContent(body, "text/html; charset=utf-8");
             multiPart.addBodyPart(mpb);
+
+            MimeBodyPart report = new MimeBodyPart();
+            FileDataSource fds = new FileDataSource(file.getPath());
+            report.setDataHandler(new DataHandler(fds));
+            report.setFileName(fds.getName());
+            multiPart.addBodyPart(report);
 
             message.setContent(multiPart, "text/html; charset=utf-8");
             Transport.send(message);
@@ -207,7 +215,21 @@ public class Mailer {
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr height=\"80\"></tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr height=\"50\"></tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-size:16px; line-height:22px; font-family:'Motiva Sans',Helvetica,Arial,sans-serif; text-align:left;\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span style=\"font-size:18px;color:#999;\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVersão completa do reporte segue em anexo!\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr height=\"50\"></tr>" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +

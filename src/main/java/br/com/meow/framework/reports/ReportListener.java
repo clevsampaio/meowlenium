@@ -15,11 +15,11 @@ public class ReportListener implements ITestListener {
         if (!Property.getEnv().equals("hom")) {
             try {
                 // TODO: É necessário aguardar ao menos 5 segundos para o reporte seja gerado e extraído
-                Thread.sleep(5000);
-                String fileReport = Directory.REPORT_FOLDER + File.separator + "report.html";
+                Thread.sleep(3000);
+                File fileReport = new File(Directory.REPORT_FOLDER + File.separator + "report.html");
                 ReportModel report = Report.extract(fileReport);
                 String mailBody = Mailer.builder(report);
-                Mailer.send(Property.get("email", "email.to"), mailBody);
+                Mailer.send(Property.get("email", "email.to"), mailBody, fileReport);
             } catch (InterruptedException ignored) {
             }
         }
