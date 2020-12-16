@@ -11,9 +11,10 @@ ou pode executar manualmente através de sua IDE.
 
 Também é possível passar alguns parâmetros, veja quais:
 ```
-mvn test -Dbrowser=firefox|chrome (default:chrome)
-mvn test -Dtype=local|remote|headless_local|headless_remote (default:local)
-mvn test -Dhub=http://localhost:4444/wd/hub
+mvn test -Dproperty.browser=firefox|chrome (default:chrome)
+mvn test -Dproperty.type=local|remote|headless_local|headless_remote (default:local)
+mvn test -Dproperty.hub=http://localhost:4444/wd/hub
+mvn test -Dproperty.env=hom|dev|stress|prod (default:hom)
 ```
 Você pode passar um ou mais a mesma linha dependendo da situação desejada.
 

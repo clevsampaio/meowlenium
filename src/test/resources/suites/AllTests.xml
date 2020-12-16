@@ -2,7 +2,8 @@
 <suite name="Suite de testes" verbose="1" parallel="classes" thread-count="3">
     <test name="Testes">
         <classes>
-            <class name="br.com.meow.testcases.AutomationPracticeTest" />
+<!--            <class name="br.com.meow.testcases.AutomationPracticeTest" />-->
+            <class name="br.com.meow.testcases.ExampleTest" />
         </classes>
     </test>
 </suite>

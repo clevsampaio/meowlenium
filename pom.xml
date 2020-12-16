@@ -12,6 +12,7 @@
         <property.browser />
         <property.type />
         <property.hub />
+        <property.env />
 
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -53,6 +54,22 @@
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.16</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.13.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,6 +95,7 @@
                         <browser>${property.browser}</browser>
                         <type>${property.type}</type>
                         <hub>${property.hub}</hub>
+                        <hub>${property.env}</hub>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

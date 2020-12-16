@@ -10,10 +10,10 @@ import java.net.URL;
 
 public class DriverRemote {
     public static WebDriver connect(Capabilities capabilities) {
-        String hub = System.getProperty("hub");
+        String hub = System.getProperty("property.hub");
 
         if (StringUtils.isEmpty(hub)){
-            System.setProperty("hub", "http://localhost:4444/wd/hub");
+            System.setProperty("property.hub", "http://localhost:4444/wd/hub");
             hub = "http://localhost:4444/wd/hub";
         }
 

@@ -1,8 +1,21 @@
 package br.com.meow.framework.reports;
 
+import br.com.meow.framework.reports.fragments.ReportFragment;
+import br.com.meow.framework.reports.fragments.TestFragment;
+import br.com.meow.framework.reports.models.ReportModel;
+import br.com.meow.framework.reports.models.TestModel;
 import com.aventstack.extentreports.MediaEntityModelProvider;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.service.ExtentTestManager;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Report {
     public static void log(Status status, String details) {
@@ -75,5 +88,32 @@ public class Report {
 
     public static void debug(String details, MediaEntityModelProvider provider) {
         ExtentTestManager.getTest().debug(details, provider);
+    }
+
+    public static ReportModel extract(String reportFile) {
+        File input = new File(reportFile);
+
+        try {
+            Document doc = Jsoup.parse(input, "UTF-8");
+
+            List<TestModel> testModel = new ArrayList<>();
+            int testCount = 1;
+
+            Elements tests = doc.select("#test-collection > li");
+
+            for (Element test : tests) {
+                TestFragment testFragment = new TestFragment();
+
+                if (!testFragment.fragment(test, testCount).getName().isEmpty()) {
+                    testModel.add(testFragment.fragment(test, testCount));
+                }
+
+                testCount++;
+            }
+
+            return new ReportFragment().fragment(doc, testModel, input.getName());
+        } catch (IOException e) {
+            throw new RuntimeException("Erro de leitura no arquivo [" + reportFile + "].", e);
+        }
     }
 }

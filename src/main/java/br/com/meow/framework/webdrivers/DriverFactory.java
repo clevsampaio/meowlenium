@@ -14,16 +14,16 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
     public static WebDriver createInstance() {
-        String browser = System.getProperty("browser");
-        String type = System.getProperty("type");
+        String browser = System.getProperty("property.browser");
+        String type = System.getProperty("property.type");
 
         if (StringUtils.isEmpty(browser)){
-            System.setProperty("browser", "chrome");
+            System.setProperty("property.browser", "chrome");
             browser = "chrome";
         }
 
         if (StringUtils.isEmpty(type)){
-            System.setProperty("type", "local");
+            System.setProperty("property.type", "local");
             type = "local";
         }
 

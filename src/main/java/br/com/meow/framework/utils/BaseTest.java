@@ -1,5 +1,6 @@
 package br.com.meow.framework.utils;
 
+import br.com.meow.framework.reports.ReportListener;
 import br.com.meow.framework.webdrivers.DriverFactory;
 import br.com.meow.framework.webdrivers.DriverManager;
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
@@ -8,7 +9,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
-@Listeners({ExtentITestListenerClassAdapter.class})
+@Listeners({
+        ExtentITestListenerClassAdapter.class,
+        ReportListener.class
+})
 public abstract class BaseTest {
     @BeforeMethod
     public void setUp() {
