@@ -1,29 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <extentreports>
     <configuration>
-        <!--  report theme  -->
-        <!--  standard, dark  -->
+        <!-- report theme -->
+        <!-- standard, dark -->
         <theme>dark</theme>
-        <!--  document encoding  -->
-        <!--  defaults to UTF-8  -->
+
+        <!-- document encoding -->
+        <!-- defaults to UTF-8 -->
         <encoding>UTF-8</encoding>
-        <!--  protocol for script and stylesheets  -->
-        <!--  defaults to https  -->
-        <protocol>http</protocol>
-        <!--  title of the document  -->
-        <documentTitle>Relatório de Execução de Teste</documentTitle>
-        <!--  report name - displayed at top-nav  -->
-        <reportName>Execução</reportName>
-        <!--  timestamp format  -->
+
+        <!-- protocol for script and stylesheets -->
+        <!-- defaults to https -->
+        <protocol>https</protocol>
+
+        <!-- title of the document -->
+        <documentTitle>Extent Framework</documentTitle>
+
+        <!-- report name - displayed at top-nav -->
+        <reportName>Relatório de Execução de Teste</reportName>
+
+        <!-- timestamp format -->
         <timeStampFormat>dd/MM/yyyy HH:mm:ss</timeStampFormat>
-        <!--  custom javascript  -->
+
+        <!-- custom javascript -->
         <scripts>
             <![CDATA[
-                $(document).ready(function() {});
-            ]]>
+                    $(document).ready(function() {
+
+                    });
+                ]]>
         </scripts>
-        <!--  custom styles  -->
+
+        <!-- custom styles -->
         <styles>
-            <![CDATA[]]>
+            <![CDATA[
+
+                ]]>
         </styles>
     </configuration>
 </extentreports>

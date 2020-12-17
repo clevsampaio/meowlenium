@@ -22,8 +22,7 @@ public class Mailer {
         Properties props = new Properties();
         props.put("mail.smtp.host", Property.get("email", "email.host"));
         props.put("mail.smtp.socketFactory.port", Property.get("email", "email.port"));
-        props.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", Property.get("email", "email.auth"));
         props.put("mail.smtp.port", Property.get("email", "email.port"));
 
