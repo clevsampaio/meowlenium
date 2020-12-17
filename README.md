@@ -1,4 +1,4 @@
-<img align="right" width="100" height="100" src="https://raw.githubusercontent.com/clevsampaio/resources/master/email_logo.png">
+<img align="right" width="auto" height="150" src="https://raw.githubusercontent.com/clevsampaio/resources/master/email_logo.png">
 
 ## Meowlênio framework/template
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/clevsampaio/template-selenium/maven?style=for-the-badge)
@@ -28,3 +28,6 @@ Para execuções avulsas, basta utilizar seguinte comando:
 ```
 mvn test -Dtest=AutomationPracticeTest (ou nome de outro teste)
 ```
+
+### Licença
+Esta distribuição, como um todo, é licenciada sob os termos da Licença Apache, Versão 2.0
