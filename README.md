@@ -1,6 +1,6 @@
 <img align="right" width="auto" height="150" src="https://raw.githubusercontent.com/clevsampaio/resources/master/email_logo.png">
 
-## Meowlênio framework/template
+## Meowlenium framework/template
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/clevsampaio/template-selenium/maven?style=for-the-badge)
 
 Framework template para testes automatizados em java
