@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite de testes" verbose="1" parallel="classes" thread-count="4">
+    <test name="Testes">
+        <classes>
+            <class name="br.com.meowlenium.testcases.parallel.Example1Test" />
+            <class name="br.com.meowlenium.testcases.parallel.Example2Test" />
+            <class name="br.com.meowlenium.testcases.parallel.Example3Test" />
+            <class name="br.com.meowlenium.testcases.AutomationPracticeTest" />
+        </classes>
+    </test>
+</suite>

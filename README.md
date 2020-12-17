@@ -1,4 +1,6 @@
-## Template Selenium
+<img align="right" width="100" height="100" src="https://raw.githubusercontent.com/clevsampaio/resources/master/email_logo.png">
+
+## Meowlênio framework/template
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/clevsampaio/template-selenium/maven?style=for-the-badge)
 
 Framework template para testes automatizados em java
@@ -11,6 +13,8 @@ ou pode executar manualmente através de sua IDE.
 
 Também é possível passar alguns parâmetros, veja quais:
 ```
+mvn test -DsuiteName=AllTests (default:AllTests)
+mvn test -DsuiteSystem=web|desktop (default:web)
 mvn test -Dproperty.browser=firefox|chrome (default:chrome)
 mvn test -Dproperty.type=local|remote|headless_local|headless_remote (default:local)
 mvn test -Dproperty.hub=http://localhost:4444/wd/hub
@@ -19,3 +23,8 @@ mvn test -Dproperty.env=hom|dev|stress|prod (default:hom)
 Você pode passar um ou mais a mesma linha dependendo da situação desejada.
 
 Estes parâmetros podem ser definidos no pom.xml
+
+Para execuções avulsas, basta utilizar seguinte comando:
+```
+mvn test -Dtest=AutomationPracticeTest (ou nome de outro teste)
+```

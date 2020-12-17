@@ -3,12 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.meow</groupId>
+    <groupId>br.com.meowlenium</groupId>
     <artifactId>template-selenium</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <properties>
-        <testSuite>AllTests</testSuite>
+        <suiteSystem>web</suiteSystem>
+        <suiteName>AllTests</suiteName>
         <property.browser />
         <property.type />
         <property.hub />
@@ -70,6 +71,11 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.sikulix</groupId>
+            <artifactId>sikulixapi</artifactId>
+            <version>2.0.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,7 +95,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/suites/${testSuite}.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/suites/${suiteSystem}/${suiteName}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <browser>${property.browser}</browser>
