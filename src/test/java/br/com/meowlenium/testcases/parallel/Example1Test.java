@@ -1,7 +1,7 @@
 package br.com.meowlenium.testcases.parallel;
 
 import br.com.meowlenium.framework.reports.Report;
-import br.com.meowlenium.framework.utils.BaseTest;
+import br.com.meowlenium.framework.utils.bases.BaseTest;
 import br.com.meowlenium.framework.webdrivers.DriverManager;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package br.com.meowlenium.framework.utils;
+package br.com.meowlenium.framework.utils.bases;
 
 import br.com.meowlenium.framework.reports.ReportListener;
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
@@ -10,7 +10,7 @@ import org.testng.annotations.Listeners;
         ExtentITestListenerClassAdapter.class,
         ReportListener.class
 })
-public abstract class BaseDesktop {
+public abstract class BaseRest {
     @BeforeMethod
     public void setUp() {
     }

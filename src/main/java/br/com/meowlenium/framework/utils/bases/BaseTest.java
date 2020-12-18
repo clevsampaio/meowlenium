@@ -1,4 +1,4 @@
-package br.com.meowlenium.framework.utils;
+package br.com.meowlenium.framework.utils.bases;
 
 import br.com.meowlenium.framework.reports.ReportListener;
 import br.com.meowlenium.framework.webdrivers.DriverFactory;

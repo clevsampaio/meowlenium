@@ -1,6 +1,6 @@
 package br.com.meowlenium.testcases;
 
-import br.com.meowlenium.framework.utils.BaseTest;
+import br.com.meowlenium.framework.utils.bases.BaseTest;
 import br.com.meowlenium.framework.webdrivers.DriverManager;
 import br.com.meowlenium.pageobjects.AutomationPracticePageObject;
 import com.github.javafaker.Faker;

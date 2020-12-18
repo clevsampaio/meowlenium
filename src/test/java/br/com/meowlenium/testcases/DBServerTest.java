@@ -1,6 +1,6 @@
 package br.com.meowlenium.testcases;
 
-import br.com.meowlenium.framework.utils.BaseDesktop;
+import br.com.meowlenium.framework.utils.bases.BaseDesktop;
 import br.com.meowlenium.pageobjects.DBServerPageObject;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Key;
