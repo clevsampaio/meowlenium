@@ -5,7 +5,7 @@
             <class name="br.com.meowlenium.testcases.parallel.Example1Test" />
             <class name="br.com.meowlenium.testcases.parallel.Example2Test" />
             <class name="br.com.meowlenium.testcases.parallel.Example3Test" />
-<!--            <class name="br.com.meowlenium.testcases.AutomationPracticeTest" />-->
+            <class name="br.com.meowlenium.testcases.AutomationPracticeTest" />
         </classes>
     </test>
 </suite>

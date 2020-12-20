@@ -24,16 +24,13 @@ public class ReportListener implements ITestListener {
     @Override
     public void onFinish(ITestContext context) {
         try {
-            // TODO: É necessário aguardar ao menos 3 segundos para o reporte seja gerado e extraído
-            Thread.sleep(3000);
+            // TODO: É necessário aguardar ao menos 5 segundos para o reporte seja gerado e extraído
+            Thread.sleep(5000);
             File fileReport = new File(Directory.REPORT_FOLDER + File.separator + "report.html");
             ReportModel reportExtract = Report.extract(fileReport);
 
             String email = System.getProperty("property.email");
             String report = System.getProperty("property.report");
-
-            System.out.println(email);
-            System.out.println(report);
 
             if (!StringUtils.isEmpty(email) && email.equals("true")) {
                 String mailBody = Mailer.builder(reportExtract);
