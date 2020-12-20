@@ -2,11 +2,13 @@ package br.com.meowlenium.framework.reports.models;
 
 import lombok.*;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @ToString
 @AllArgsConstructor
 @RequiredArgsConstructor

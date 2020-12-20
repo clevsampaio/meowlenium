@@ -1,11 +1,13 @@
 package br.com.meowlenium.framework.reports;
 
-import br.com.meowlenium.framework.utils.Mailer;
 import br.com.meowlenium.framework.reports.models.ReportModel;
 import br.com.meowlenium.framework.utils.Directory;
+import br.com.meowlenium.framework.utils.Mailer;
 import br.com.meowlenium.framework.utils.Property;
+import br.com.meowlenium.framework.utils.Rest;
 import com.aventstack.extentreports.AnalysisStrategy;
 import com.aventstack.extentreports.service.ExtentService;
+import org.apache.commons.lang3.StringUtils;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 
@@ -21,16 +23,29 @@ public class ReportListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
-        if (!Property.getEnv().equals("hom")) {
-            try {
-                // TODO: É necessário aguardar ao menos 3 segundos para o reporte seja gerado e extraído
-                Thread.sleep(3000);
-                File fileReport = new File(Directory.REPORT_FOLDER + File.separator + "report.html");
-                ReportModel report = Report.extract(fileReport);
-                String mailBody = Mailer.builder(report);
+        try {
+            // TODO: É necessário aguardar ao menos 3 segundos para o reporte seja gerado e extraído
+            Thread.sleep(3000);
+            File fileReport = new File(Directory.REPORT_FOLDER + File.separator + "report.html");
+            ReportModel reportExtract = Report.extract(fileReport);
+
+            String email = System.getProperty("property.email");
+            String report = System.getProperty("property.report");
+
+            System.out.println(email);
+            System.out.println(report);
+
+            if (!StringUtils.isEmpty(email) && email.equals("true")) {
+                String mailBody = Mailer.builder(reportExtract);
                 Mailer.send(Property.get("email", "email.to"), mailBody, fileReport);
-            } catch (InterruptedException ignored) {
             }
+
+            if (!StringUtils.isEmpty(report) && report.equals("true")) {
+                String path = "/api/project/" + Property.get("report", "token");
+                Rest rest = new Rest(Property.get("report", "url"));
+                rest.post(path, 200, Report.json(reportExtract));
+            }
+        } catch (InterruptedException ignored) {
         }
     }
 }

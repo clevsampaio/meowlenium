@@ -27,6 +27,15 @@ public class Rest {
                 statusCode(statusCode);
     }
 
+    public ValidatableResponse post(String path, int statusCode, String json) {
+        return RestAssured.given().
+                body(json).
+            when().
+                post(this.url + path).
+            then().
+                statusCode(statusCode);
+    }
+
     public ValidatableResponse put(String path, int statusCode, Class object) {
         return RestAssured.given().
                 body(object).

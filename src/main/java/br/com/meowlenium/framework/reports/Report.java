@@ -2,7 +2,9 @@ package br.com.meowlenium.framework.reports;
 
 import br.com.meowlenium.framework.reports.fragments.ReportFragment;
 import br.com.meowlenium.framework.reports.fragments.TestFragment;
+import br.com.meowlenium.framework.reports.models.LogModel;
 import br.com.meowlenium.framework.reports.models.ReportModel;
+import br.com.meowlenium.framework.reports.models.StepModel;
 import br.com.meowlenium.framework.reports.models.TestModel;
 import com.aventstack.extentreports.MediaEntityModelProvider;
 import com.aventstack.extentreports.Status;
@@ -14,6 +16,7 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,5 +116,87 @@ public class Report {
         } catch (IOException e) {
             throw new RuntimeException("Erro de leitura no arquivo [" + reportFile + "].", e);
         }
+    }
+
+    public static String json(ReportModel report)
+    {
+        DateTimeFormatter formatter_ddMMyyyyHHmmss = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter_HHmmss = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("{").
+                append("\"fileName\":\"" + report.getFileName() + "\",").
+                append("\"suiteStartTime\":\"" + report.getSuiteStartTime().format(formatter_ddMMyyyyHHmmss) + "\",").
+                append("\"tests\":\"" + report.getTests() + "\",").
+                append("\"steps\":\"" + report.getSteps() + "\",").
+                append("\"start\":\"" + report.getStart().format(formatter_ddMMyyyyHHmmss) + "\",").
+                append("\"end\":\"" + report.getEnd().format(formatter_ddMMyyyyHHmmss) + "\",").
+                append("\"timeTaken\":\"" + report.getTimeTaken().toSeconds() + "\",").
+                append("\"testModel\":[");
+
+        int testModelCount = report.getTestModel().size();
+        int testModelFor = 1;
+
+        for (TestModel testModel : report.getTestModel()) {
+            sb.append("{").
+                    append("\"name\":\"" + testModel.getName() + "\",").
+                    append("\"time\":\"" + testModel.getTime().format(formatter_ddMMyyyyHHmmss) + "\",").
+                    append("\"status\":\"" + testModel.getStatus() + "\",").
+                    append("\"stepModel\":[");
+
+            int stepModelCount = testModel.getStepModel().size();
+            int stepModelFor = 1;
+
+            for (StepModel stepModel : testModel.getStepModel()) {
+                sb.append("{").
+                        append("\"name\":\"" + stepModel.getName() + "\",").
+                        append("\"time\":\"" + stepModel.getTime().format(formatter_ddMMyyyyHHmmss) + "\",").
+                        append("\"duration\":\"" + stepModel.getDuration() + "\",").
+                        append("\"status\":\"" + stepModel.getStatus() + "\",").
+                        append("\"logModel\":[");
+
+                int logModelCount = stepModel.getLogModel().size();
+                int logModelFor = 1;
+
+                for (LogModel logModel : stepModel.getLogModel()) {
+                    sb.append("{").
+                            append("\"status\":\"" + logModel.getStatus() + "\",").
+                            append("\"timeStamp\":\"" + logModel.getTimeStamp().format(formatter_HHmmss) + "\",").
+                            append("\"details\":\"" + logModel.getDetails() + "\",").
+                            append("\"base64img\":\"" + logModel.getBase64img() + "\"");
+
+                    if (logModelCount == logModelFor) {
+                        sb.append("}");
+                    } else {
+                        sb.append("},");
+                    }
+
+                    logModelFor++;
+                }
+
+                sb.append("]");
+                if (stepModelCount == stepModelFor) {
+                    sb.append("}");
+                } else {
+                    sb.append("},");
+                }
+
+                stepModelFor++;
+            }
+
+            sb.append("]");
+            if (testModelCount == testModelFor) {
+                sb.append("}");
+            } else {
+                sb.append("},");
+            }
+
+            testModelFor++;
+        }
+
+        sb.append("]").append("}");
+
+        return sb.toString();
     }
 }

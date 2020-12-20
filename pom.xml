@@ -5,15 +5,17 @@
 
     <groupId>br.com.meowlenium</groupId>
     <artifactId>template-selenium</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <properties>
         <suiteSystem>web</suiteSystem>
         <suiteName>AllTests</suiteName>
-        <property.browser />
-        <property.type />
-        <property.hub />
-        <property.env />
+        <property.browser>chrome</property.browser>
+        <property.type>local</property.type>
+        <property.hub>http://localhost:4444/wd/hub</property.hub>
+        <property.env>hom</property.env>
+        <property.email>false</property.email>
+        <property.report>false</property.report>
 
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -108,10 +110,12 @@
                         <suiteXmlFile>src/test/resources/suites/${suiteSystem}/${suiteName}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <browser>${property.browser}</browser>
-                        <type>${property.type}</type>
-                        <hub>${property.hub}</hub>
-                        <hub>${property.env}</hub>
+                        <property.browser>${property.browser}</property.browser>
+                        <property.type>${property.type}</property.type>
+                        <property.hub>${property.hub}</property.hub>
+                        <property.env>${property.env}</property.env>
+                        <property.email>${property.email}</property.email>
+                        <property.report>${property.report}</property.report>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
