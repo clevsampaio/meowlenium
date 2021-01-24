@@ -31,12 +31,5 @@ Para execuções avulsas, basta utilizar seguinte comando:
 mvn test -Dtest=AutomationPracticeTest (ou nome de outro teste)
 ```
 
-### Conheça Meowlenium Monitor
-É possível vincular seu projeto com nossa plataforma de monitoramento de testes, saiba quando passou ou falhou e obtenha todos os detalhes de um reporte completo.
-
-Clique [aqui](https://www.meowlenium.com.br) para acessar!
-
-Obs.: Sistema em fase BETA!
-
 ### Licença
 Esta distribuição, como um todo, é licenciada sob os termos da Licença Apache, Versão 2.0
